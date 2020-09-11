@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="454386135685-akic3fd97sal9oci4rme9os4f9o99nr5.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="css/cars.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Cars</title>
+</head>
+
+<body>
+    <div id="line">
+        <div>
+            <input type="text" placeholder="Brand" id="Brand">
+            <input type="text" placeholder="Date" id="Date">
+            <input type="text" placeholder="Transmision" id="Transmission">
+        </div>
+        <div>
+            <input type="text" placeholder="Model" id="Model">
+            <input type="text" placeholder="Color" id="Color">
+            <input type="text" placeholder="HP" id="HP">
+        </div>
+        <button id="createButton">Create</button>
+    </div>
+    <div id="editLine">
+        <div>
+            <input type="text" id="BrandEdit">
+            <input type="text" id="DateEdit">
+            <input type="text" id="TransmissionEdit">
+        </div>
+        <div>
+            <input type="text" id="ModelEdit">
+            <input type="text" id="ColorEdit">
+            <input type="text" id="editHp">
+        </div>
+        <button id="editButton">Edit</button>
+    </div>
+    <input type="text" id="searchInput">
+    <button id="searchButton">Search</button>
+    <button id="addButton" onclick="hideShow()">Add</button>
+    <button id="signOut">Google Sign Out</button>
+    
+    
+        
+</body>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="js/cars.js"></script>
+    <script src="js/allCars.js"></script>
+
+
+</html>
