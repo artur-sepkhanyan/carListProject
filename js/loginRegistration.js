@@ -22,20 +22,35 @@ let changeRegButton = document.getElementById('rgstr_btn');
 
 const translateControls = document.querySelectorAll('[data-translate]');
 const languageBar = document.getElementById("language");
-languageBar.addEventListener('change', (event)=> changeLanguage(event.target.value));
+languageBar.addEventListener('change', (event) => changeLanguage(event.target.value));
+let lang = "eng";
+class Language {
+    constructor() {
+        if (Language.exists) {
+            return Language.instance;
+        }
 
-function changeLanguage(value) {
-    import(`../languages/${value}.js`).then(locale => {
+        Language.instance = this;
+        Language.exists = true;
+        return this;
+    }
+    async languageObject() {
+        return await import(`../languages/${lang}.js`).then((locale => {
 
-        translateControls.forEach(item => {
-            item.innerHTML = locale.default[item.dataset.translate];
-            item.value = locale.default[item.dataset.translate];
+            translateControls.forEach(item => {
+                item.innerHTML = locale.default[item.dataset.translate];
+                item.value = locale.default[item.dataset.translate];
+            })
         })
-    })
+        );
+    }
 }
 
-changeLanguage(languageBar.value)
-
+function changeLanguage(value) {
+    const language = new Language();
+    lang = value;
+    language.languageObject();
+}
 
 let store = () => {
     let nameSurname = document.forms[0].name.value;

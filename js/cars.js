@@ -41,15 +41,23 @@ const mainTable = document.createElement('table');
 mainTable.setAttribute("id", "tableStyle");
 
 const page = 10;
-const myCars = ["Model", "Brand", "Date", "Horsepower", "Transmission", "Class", "Remove", "Edit"];
+
+function carListTh(){
+ const myCars = ["Model", "Brand", "Date", "Horsepower", "Transmission", "Class"];
+ myCars.push("Remove");
+    return {
+        thCArs:myCars
+    }
+}
+
 cars = car.slice(0, page)
 
 function table(cars) {
     const row = document.createElement('tr');
-    for (let i = 0; i < myCars.length; i++) {
+    for (let i = 0; i < carListTh().thCArs.length; i++) {
         const th = document.createElement('th');
-        th.innerText = (myCars[i]);
-        if (i < myCars.length - 2) {
+        th.innerText = (carListTh().thCArs[i]);
+        if (i < carListTh().thCArs.length - 2) {
             th.setAttribute('draggable', 'true');
             th.setAttribute('ondragstart', 'dragStart(' + i + ', event)');
             th.setAttribute('ondragover', 'dragOver()');
@@ -63,18 +71,18 @@ function table(cars) {
 
     for (let i = 0; i < cars.length; i++) {
         const tr = document.createElement('tr');
-        for (let j = 0; j < myCars.length; j++) {
+        for (let j = 0; j < carListTh().thCArs.length; j++) {
             var td = document.createElement('td');
             cars[i].Remove = "Remove";
             cars[i].Edit = "Edit";
-            if (j === myCars.length - 2) {
+            if (j === carListTh().thCArs.length - 2) {
                 td.addEventListener("click", removeField);
-            } else if (j === myCars.length - 1) {
+            } else if (j === carListTh().thCArs.length - 1) {
                 td.addEventListener("click", editDisplay);
             }
 
             td.setAttribute('data-id', i);
-            td.innerText = cars[i][myCars[j]];
+            td.innerText = cars[i][carListTh().thCArs[j]];
             tr.appendChild(td);
             tr.setAttribute("data-order", i);
             mainTable.appendChild(tr);
