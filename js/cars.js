@@ -44,7 +44,7 @@ const page = 10;
 
 function carListTh(){
  const myCars = ["Model", "Brand", "Date", "Horsepower", "Transmission", "Class"];
- myCars.push("Remove");
+ myCars.push("Remove","Edit");
     return {
         thCArs:myCars
     }
